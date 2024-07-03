@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Samosa Image Search</title>
+    </head>
+    <body style="  background-color: rgb(133, 208, 184);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    margin: 0;">
+        <div class="container">
+            <h1 class="rainbow-letters" style="  text-align: center;
+            font-size: 80px;
+            font-family: Fantasy;
+            text-transform: uppercase;"> 
+                <span style="color: rgb(61, 87, 98);">B</span>
+                <span style="color: rgb(136, 76, 136);">U</span>
+                <span style="color: indigo;">N</span>
+                <span>&nbsp</span>
+                <span style="color: green;">S</span>
+                <span style="color: blue;">A</span>
+                <span style="color: rgb(178, 178, 43);">M</span>
+                <span style="color: orange;">O</span>
+                <span style="color: red;">S</span>
+                <span style="color: rgb(61, 87, 98);">A</span>
+            </h1>
+            <form method="POST" enctype="multipart/form-data" style="  display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 60px;">
+                <input id="choose-button" 
+                style="padding: 8px 20px;
+                background-color: grey;
+                color: rgb(0, 0, 0);
+                border: none;
+                font-size: 20px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+                cursor: pointer;
+                border-radius: 5px;
+                transition: background-color 0.3s ease-in-out;" 
+                type="file" name="query_img">
+                <br>
+                <input id="search-button" 
+                style="padding: 8px 20px;   
+                font-weight: bold;
+                cursor: pointer;
+                font-size: 20px;
+                color: rgb(33, 33, 33);
+                padding: 0.5em;
+                border: thin solid grey;
+                border-radius: 10px;
+                background-color: #906590;"
+                type="submit">
+            </form>
+            <h2 style="padding-left: 20px;">Your Query:</h2>
+            {% if query_path %}
+            <img src="{{ query_path }}" width="300px" style="padding-left: 20px;">
+            {% endif %}
+            <h2 style="padding-left: 20px;">Results:</h2>
+            {% for score in scores %}
+            <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
+                <img src="{{ score[1] }}" height="200px">
+                <figcaption>{{ score[0] }}</figcaption>
+            </figure>
+            {% endfor %}
+        </div>
+    </body>
+</html>
+
+
